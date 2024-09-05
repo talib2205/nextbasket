@@ -1,0 +1,6 @@
+target/
+test-output/
+src/test/resources/data/mobile
+.idea/
+.settings/
+/BSF-Omni.iml

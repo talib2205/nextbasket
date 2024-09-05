@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="E2E test cases execution for BSF OMNI on ANDROID,IOS and WEB" thread-count="3" verbose="3" parallel="tests" annotations="JDK">
+
+    <test name="Android Test case">
+        <parameter name="deviceType" value="android"/>
+        <parameter name="deviceName" value="android"/>
+        <classes>
+            <class name="StepDefinitions.TestRunner_Android"/>
+        </classes>
+    </test>
+<!--    <test name="Ios Test case">-->
+<!--        <parameter name="deviceType" value="browserstack-ios"/>-->
+<!--        <parameter name="deviceName" value="iPoneProMax"/>-->
+<!--        <classes>-->
+<!--            <class name="StepDefinitions.TestRunner_Ios"/>-->
+<!--        </classes>-->
+<!--    </test>-->
+    <test name="Web Test case">
+        <parameter name="deviceType" value="browser"/>
+        <parameter name="url" value="url"/>
+        <classes>
+            <class name="StepDefinitions.TestRunner_Browser"/>
+        </classes>
+    </test>
+</suite><!-- Test -->
+
