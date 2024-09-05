@@ -1,0 +1,22 @@
+Bug 1: Payment Button Not Responding
+Feature: Checkout
+
+  Scenario: Payment button does not respond when clicked
+    Given I have added products to my cart
+    And I am on the payment page
+    When I enter valid payment details
+    And I click on the "Pay Now" button
+    Then the button should process the payment
+    But the button is unresponsive, and nothing happens
+    And I am unable to complete the checkout
+
+Bug 2: Discount Code Incorrectly Applied
+Feature: Checkout
+
+  Scenario: Incorrect discount calculation with valid discount code
+    Given I have added products to my cart
+    And I have a valid discount code for 10% off
+    When I apply the discount code during checkout
+    Then the total amount should reduce by 10%
+    But the total amount does not reflect the discount
+    And the discount is not applied correctly

@@ -1,0 +1,86 @@
+Test Case 1: Successful Checkout with Valid Card Payment
+Feature: Checkout
+
+  Scenario: Successful checkout with a valid card
+    Given I have added products to my cart
+    And I am on the checkout page
+    When I enter valid payment details using a credit card
+    And I confirm the order
+    Then I should see the order confirmation message
+    And the payment should be processed successfully
+
+Test Case 2: Checkout with Empty Cart
+Scenario: Checkout with an empty cart
+  Given I have no items in my cart
+  When I attempt to proceed to checkout
+  Then I should see a message indicating that the cart is empty
+  And I should not be allowed to proceed to the payment page
+
+Test Case 3: Invalid Credit Card Payment
+Scenario: Invalid credit card details during checkout
+  Given I have added products to my cart
+  And I am on the checkout page
+  When I enter invalid credit card details
+  And I confirm the order
+  Then I should see an error message stating "Invalid card details"
+  And the payment should not be processed
+
+Test Case 4: Checkout with Expired Card
+Scenario: Checkout with an expired credit card
+  Given I have added products to my cart
+  And I am on the checkout page
+  When I enter an expired credit card number
+  And I confirm the order
+  Then I should see an error message stating "Card expired"
+  And the payment should be declined
+
+Test Case 5: Checkout with Valid Discount Code
+Scenario: Successful checkout with a valid discount code
+  Given I have added products to my cart
+  And I have a valid discount code
+  When I apply the discount code
+  And I proceed to checkout
+  Then the discount should be applied to the total amount
+  And I should be able to complete the payment successfully
+
+Test Case 6: Checkout with Invalid Discount Code
+Scenario: Applying an invalid discount code during checkout
+  Given I have added products to my cart
+  And I have an invalid discount code
+  When I apply the discount code
+  Then I should see an error message stating "Invalid code"
+  And the discount should not be applied
+
+Test Case 7: Checkout with Multiple Shipping Addresses
+Scenario: Select multiple shipping addresses during checkout
+  Given I have added products to my cart
+  And I have multiple shipping addresses saved
+  When I proceed to checkout
+  And I select one of my saved addresses
+  Then the selected address should be displayed for the order
+  And the shipping method should update accordingly
+
+Test Case 8: Checkout with Missing Billing Address
+Scenario: Attempt checkout with a missing billing address
+  Given I have added products to my cart
+  And I am on the checkout page
+  When I leave the billing address field empty
+  And I attempt to complete the order
+  Then I should see an error message requesting the billing address
+  And the checkout process should not be completed
+
+Test Case 9: Checkout with Different Billing and Shipping Addresses
+Scenario: Successful checkout with different billing and shipping addresses
+  Given I have added products to my cart
+  And I have different billing and shipping addresses
+  When I enter my billing address
+  And I select a different shipping address
+  Then I should be able to complete the order
+  And the order summary should reflect both addresses
+
+Test Case 10: Checkout with Out-of-Stock Product
+Scenario: Checkout with an out-of-stock product
+  Given I have added an out-of-stock product to my cart
+  When I proceed to checkout
+  Then I should see an error message stating "Product out of stock"
+  And I should not be able to complete the order
